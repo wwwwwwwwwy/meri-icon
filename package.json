@@ -1,6 +1,6 @@
 {
   "name": "meri-vue-icon",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "lib/main.es.js",
   "types": "lib/main.d.ts",
   "scripts": {
