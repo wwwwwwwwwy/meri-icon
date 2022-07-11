@@ -1,7 +1,7 @@
 
   <template>
   <div class="container">
-    <!-- <Banner /> -->
+    <Banner />
     <ul class="wrapper">
       <li
         class="item"
@@ -21,13 +21,13 @@
 import { defineComponent } from "vue";
 import Message from "vue-m-message";
 import "vue-m-message/dist/style.css";
-// import Banner from "./components/Banner.vue";
+import Banner from "./components/Banner.vue";
 
 import * as icons from "./index";
 
 export default defineComponent({
   components: {
-    // Banner,
+    Banner,
     ...icons,
   },
   setup() {

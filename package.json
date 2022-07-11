@@ -6,7 +6,7 @@
   "scripts": {
     "generate": "sudo rm -rf src/icons && node bin/build.js",
     "serve": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "build-bundle": "vue-tsc --noEmit && vite build -c ./vite.build.config.ts",
     "figma": "node bin/figma.js"
   },
