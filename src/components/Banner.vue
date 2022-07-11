@@ -14,12 +14,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "Banner",
-};
-</script>
-
 <style lang="css">
 .banner {
   padding-top: 30px;
