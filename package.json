@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^3.2.25"
+    "vue": "^3.2.25",
+    "vue-m-message": "^4.0.1"
   },
   "devDependencies": {
     "@types/node": "^18.0.0",
