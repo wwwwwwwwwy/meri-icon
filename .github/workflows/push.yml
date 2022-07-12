@@ -42,4 +42,7 @@ jobs:
       with:
         url: ${{ secrets.DINGTALK_WEBHOOK }}
         type: markdown
-        content: '{"msgtype": "text", "text": {"content": "meri-icon 更新了"}}'
+        content: |
+          # meri-icon 图标库更新了
+          ## 请按照以下方法进行更新
+          > npm update meri-icon
