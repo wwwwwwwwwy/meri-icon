@@ -42,4 +42,4 @@ jobs:
       with:
         url: ${{ secrets.DINGTALK_WEBHOOK }}
         type: markdown
-        content: '{"msgtype": "text", "text": {"content": "我就是我, 是不一样的烟火"}}'
+        content: '{"msgtype": "text", "text": {"content": "meri-icon 更新了"}}'
