@@ -44,5 +44,13 @@ jobs:
         type: markdown
         content: |
           # meri-icon 图标库更新了
-          ## 请按照以下方法进行更新
-          > npm update meri-icon
+          ### 请按照以下方法进行更新
+          ```
+          npm update meri-icon
+          ```
+          ### 安装方式
+          ```
+          npm install meri-icon
+          ```
+          ### 访问地址
+          在线查看图标：https://wwwwwwwwwy.github.io/meri-icon/
