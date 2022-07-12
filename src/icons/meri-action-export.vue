@@ -9,7 +9,7 @@
       '--svg-hover-color': hoverColor || color,
     }" :stroke="color" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
     >
-      <path d="M1.033 12.02a1 1 0 011-1h20a1 1 0 110 2h-20a1 1 0 01-1-1z" fill="#8B949E" class="fill_color"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M11.552 23.054a.96.96 0 01-.96-.96V2.014a.96.96 0 111.92 0v20.08c0 .53-.43.96-.96.96z" fill="#1B2129" class="fill_color"></path>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M21.008 1c.274 0 .507.097.7.295a.95.95 0 01.292.703v5.975a.962.962 0 01-.291.706.952.952 0 01-.701.292.952.952 0 01-.702-.292.962.962 0 01-.29-.706v-3.57l-8.23 8.263a.946.946 0 01-.697.289.963.963 0 01-.709-.283.975.975 0 01-.282-.713c0-.277.095-.508.286-.703l8.229-8.262h-3.557a.956.956 0 01-.701-.293.964.964 0 01-.29-.703c0-.277.097-.511.29-.706A.955.955 0 0115.056 1h5.952z" fill="#1B2129" class="fill_color"></path><path d="M21 11.274v9.052a.67.67 0 01-.667.674H3.667A.67.67 0 013 20.326V3.586c0-.372.3-.673.667-.673h8.45a1 1 0 100-2h-8.45A2.67 2.67 0 001 3.587v16.74A2.67 2.67 0 003.667 23h16.666A2.67 2.67 0 0023 20.326v-9.052a1 1 0 10-2 0z" fill="#8B949E" class="fill_color"></path>
     </svg>
   </template>
   <script lang="ts">

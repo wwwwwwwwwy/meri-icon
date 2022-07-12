@@ -9,7 +9,7 @@
       '--svg-hover-color': hoverColor || color,
     }" :stroke="color" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
     >
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M12.492 3.301l.116-.156C13.483 1.965 15.416 1 16.911 1c2.617 0 4.732 2.145 4.732 4.784a4.798 4.798 0 01-1.645 3.627l-9.983 10.445a2.727 2.727 0 01-1.971.843H4.926A2.727 2.727 0 012.2 17.972v-2.834c0-.706.274-1.384.763-1.892l7.904-8.205 1.626-1.74zm.907 1.96l-1.077 1.151-.01.011-7.91 8.21a.727.727 0 00-.203.505v2.834c0 .401.326.727.727.727h3.118a.727.727 0 00.525-.225l8.825-9.233-3.995-3.98zM16.91 3c1.506 0 2.732 1.244 2.732 2.784a2.81 2.81 0 01-.53 1.649L14.9 3.72c.613-.41 1.422-.72 2.01-.72z" fill="#373C43" class="fill_color"></path><rect x="2.18" y="21.03" width="19" height="2" rx="1" fill="#8D9399" class="fill_color"></rect>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M13.027 16.987a1 1 0 11-2 0v-14a1 1 0 012 0v14z" fill="#1B2129" class="fill_color"></path><path d="M5.722 9.633a1 1 0 11-1.39-1.439l7.175-6.926a.997.997 0 011.41.021l6.826 7a1 1 0 11-1.432 1.396l-6.13-6.287-6.46 6.235z" fill="#1B2129" class="fill_color"></path><path d="M1.027 14.987v5a3 3 0 003 3h16a3 3 0 003-3v-5a1 1 0 10-2 0v5a1 1 0 01-1 1h-16a1 1 0 01-1-1v-5a1 1 0 10-2 0z" fill="#8B949E" class="fill_color"></path>
     </svg>
   </template>
   <script lang="ts">
