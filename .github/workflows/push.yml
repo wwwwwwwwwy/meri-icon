@@ -38,12 +38,8 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
     - name: Ding Talk Notify
-      uses: fifsky/dingtalk-action@master
+      uses: wwwwwwwwwy/dingtalk-action@master
       with:
         url: ${{ secrets.DINGTALK_WEBHOOK }}
         type: markdown
-        content: |
-          # Tips
-          ## Hello
-          > from github action message
-          > ^_^
+        content: '{"msgtype": "text", "text": {"content": "我就是我, 是不一样的烟火"}}'
