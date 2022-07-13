@@ -1,6 +1,6 @@
 {
   "name": "meri-icon",
-  "version": "1.0.82",
+  "version": "1.0.83",
   "main": "lib/main.es.js",
   "types": "lib/main.d.ts",
   "scripts": {
