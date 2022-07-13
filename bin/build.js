@@ -23,7 +23,7 @@ const generateIndex = () => {
     fs.mkdirSync(iconsDir)
   }
 
-  fs.writeFileSync(path.join(rootDir, 'src', 'index.ts'), '', 'utf-8');
+  fs.writeFileSync(path.join(rootDir, 'src', 'index.ts'), 'import "./index.less";\r\n', 'utf-8');
 }
 
 // generate attributes code

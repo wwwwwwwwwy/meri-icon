@@ -7,7 +7,7 @@
     }" :style="{
       '--svg-color': color,
       '--svg-hover-color': hoverColor || color,
-    }" :stroke="color" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+    }" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
     >
       <path fill-rule="evenodd" clip-rule="evenodd" d="M13 22a1 1 0 11-2 0V7a1 1 0 112 0v15z" fill="#1B2129" class="fill_color"></path><path d="M12.153 7.41l-6.458 6.236a1 1 0 11-1.39-1.44l7.175-6.925a.997.997 0 011.41.02l6.826 7a1 1 0 11-1.432 1.397l-6.131-6.287z" fill="#1B2129" class="fill_color"></path><path d="M2 2a1 1 0 011-1h18a1 1 0 110 2H3a1 1 0 01-1-1z" fill="#8B949E" class="fill_color"></path>
     </svg>
@@ -34,24 +34,3 @@ export default defineComponent({
   },
 });
 </script>
-
-
-<style lang="less" scoped>
-.m_svg_class {
-  .fill_color {
-    fill: var(--svg-color);
-  }
-
-  &:hover {
-    .fill_color {
-      fill: var(--svg-hover-color);
-    }
-  }
-}
-
-.m_svg_class_hover:hover {
-  .fill_color {
-    fill: var(--svg-hover-color);
-  }
-}
-</style>

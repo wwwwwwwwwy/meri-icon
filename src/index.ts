@@ -1,3 +1,4 @@
+import "./index.less";
 export { default as IconMeriActionAdd } from './icons/meri-action-add.vue';
 export { default as IconMeriActionMinus } from './icons/meri-action-minus.vue';
 export { default as IconMeriActionDone } from './icons/meri-action-done.vue';

@@ -1,7 +1,7 @@
 
   <template>
   <div class="container">
-    <Banner />
+     <h1 class="banner">Meri Icon</h1>
     <ul class="wrapper">
       <li
         class="item"
@@ -14,6 +14,7 @@
         <div>{{ iconComponentName }}</div>
       </li>
     </ul>
+     <Banner />
   </div>
 </template>
 

@@ -18,7 +18,7 @@ const getAttrs = (style) => {
     ':fill': 'color111'
   }
   const strokeAttrs = {
-    ':stroke': 'color',
+    // ':stroke': 'color',
     'fill': 'none',
     'stroke-width': 2,
     'stroke-linecap': 'round',
@@ -57,27 +57,6 @@ export default defineComponent({
   },
 });
 </script>
-
-
-<style lang="less" scoped>
-.m_svg_class {
-  .fill_color {
-    fill: var(--svg-color);
-  }
-
-  &:hover {
-    .fill_color {
-      fill: var(--svg-hover-color);
-    }
-  }
-}
-
-.m_svg_class_hover:hover {
-  .fill_color {
-    fill: var(--svg-hover-color);
-  }
-}
-</style>
 `
 
 module.exports = { getAttrs, getElementCode }
