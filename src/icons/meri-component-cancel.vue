@@ -9,7 +9,7 @@
       '--svg-hover-color': hoverColor || color,
     }" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
     >
-      <path d="M22.041 11a1 1 0 110 2h-19a1 1 0 110-2h19z" fill="#8B949E" class="fill_color"></path><path d="M11.748 20.293a1 1 0 01-1.414 1.414l-9.042-9.046a1 1 0 01-.246-1.008.996.996 0 01.298-.622l9-8.748a1 1 0 011.394 1.434l-8.399 8.164 8.41 8.412z" fill="#1B2129" class="fill_color"></path>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 1.5C6.201 1.5 1.5 6.201 1.5 12S6.201 22.5 12 22.5 22.5 17.799 22.5 12 17.799 1.5 12 1.5zm6.085 15.38l-1.194 1.193-4.868-4.869-4.868 4.869-1.192-1.194 4.868-4.868-4.868-4.867L7.155 5.95l4.868 4.869 4.868-4.869 1.194 1.194-4.869 4.868 4.868 4.867z" fill="#C4C9CF" class="fill_color"></path>
     </svg>
   </template>
   <script lang="ts">
