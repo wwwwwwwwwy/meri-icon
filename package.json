@@ -1,6 +1,6 @@
 {
   "name": "meri-icon",
-  "version": "1.0.93",
+  "version": "1.0.94",
   "main": "lib/main.es.js",
   "types": "lib/packages/meri-vue-icon/src/index.d.ts",
   "scripts": {
@@ -10,7 +10,9 @@
     "build-bundle": "vite build -c ./vite.build.config.ts",
     "figma": "node bin/figma.js"
   },
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^3.2.25",
