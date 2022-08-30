@@ -31,12 +31,12 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
   <template>
     <svg
       ${attrs}
+      v-html="html"
     >
-      ${svgCode}
     </svg>
   </template>
   <script lang="ts">
-import { defineComponent, PropType, toRefs } from "vue";
+import { defineComponent, PropType, toRefs,ref } from "vue";
 
 export default defineComponent({
   props: {
@@ -53,7 +53,8 @@ export default defineComponent({
   },
   setup(props, { attrs }) {
     const { size, color } = toRefs(props);
-    return { size, color, attrs };
+    const html = ref('${svgCode}')
+    return { size, color, attrs ,html};
   },
 });
 </script>
