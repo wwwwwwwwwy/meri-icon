@@ -1,8 +1,8 @@
 const getAttrs = (style) => {
   const baseAttrs = {
     'xmlns': 'http://www.w3.org/2000/svg',
-    ':width': 'size',
-    ':height': 'size',
+    ':width': 'width || size',
+    ':height': 'height || size',
     'viewBox': '0 0 24 24',
     'aria-hidden': 'true',
     ':class': `{
@@ -50,11 +50,19 @@ export default defineComponent({
     hoverColor: {
       type: String as PropType<string | undefined>,
     },
+    height: {
+      type: Number as PropType<number>,
+      default: 0,
+    },
+    width: {
+      type: Number as PropType<number>,
+      default: 0,
+    },
   },
   setup(props, { attrs }) {
-    const { size, color } = toRefs(props);
+    const { size,height,width, color } = toRefs(props);
     const html = ref('${svgCode}')
-    return { size, color, attrs ,html};
+    return { size,height,width, color, attrs ,html};
   },
 });
 </script>
