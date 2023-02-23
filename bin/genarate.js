@@ -68,7 +68,7 @@ const generate_vue_template = (code_str, attrs) => {
     props: {
       size: {
         type: Number as PropType<number>,
-        default: ${width},
+        default: 16,
       },
       color: {
         type: String as PropType<string | undefined>,
