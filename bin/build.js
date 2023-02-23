@@ -7,6 +7,7 @@ const { parseName } = require('./utils')
 const defaultStyle = process.env.npm_package_config_style || 'stroke'
 const { getAttrs, getElementCode } = require('./template')
 const icons = require('../src/data.json')
+const generate  = require("./genarate");
 
 const rootDir = path.join(__dirname, '..')
 
@@ -46,8 +47,8 @@ const generateIconCode = async ({name}) => {
   const code = fs.readFileSync(location)
   const svgCode = await processSvg(code)
   const ComponentName = names.componentName
-  console.log(svgCode);
-  const component = getElementCode(ComponentName, attrsToString(getAttrs(names.style), names.style), svgCode)
+  // const component = getElementCode(ComponentName, attrsToString(getAttrs(names.style), names.style), svgCode)
+  const component = generate(svgCode);
 
   fs.writeFileSync(destination, component, 'utf-8');
 

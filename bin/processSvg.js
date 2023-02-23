@@ -73,12 +73,11 @@ async function processSvg(svg) {
     // remove semicolon inserted by prettier
     // because prettier thinks it's formatting JSX not HTML
     .then(svg => svg.replace(/;/g, ''))
-    .then(removeSVGElement)
+    // .then(removeSVGElement)
     .then(svg => {
       // console.log(svg)
       return addClassForPath(svg);
-    }
-    )
+    })
   return optimized;
 }
 
