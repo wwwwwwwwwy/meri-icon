@@ -71,6 +71,7 @@ export { default as IconMeriComponentNotificationInfo } from './icons/meri-compo
 export { default as IconMeriComponentNotificationWarning } from './icons/meri-component-notification-warning.vue';
 export { default as IconMeriComponentDialogWarning } from './icons/meri-component-dialog-warning.vue';
 export { default as IconMeriComponentDialogDelete } from './icons/meri-component-dialog-delete.vue';
+export { default as IconMeriComponentDialogLinear } from './icons/meri-component-dialog-linear.vue';
 export { default as IconMeriComponentFileTypeZip } from './icons/meri-component-fileType-zip.vue';
 export { default as IconMeriComponentFileTypeMov } from './icons/meri-component-fileType-mov.vue';
 export { default as IconMeriComponentFileTypeMp3 } from './icons/meri-component-fileType-mp3.vue';
