@@ -1,17 +1,17 @@
 <template>
-<div>
+  <div>
     <div class="code">
-        <div>
-            <h3>安装</h3>
-            <pre>
+      <div>
+        <h3>安装</h3>
+        <pre>
 <div>
   npm install meri-icon --save
   pnpm install meri-icon --save
 </div></pre>
-        </div>
-        <div>
-            <h3>使用</h3>
-            <pre>
+      </div>
+      <div>
+        <h3>使用</h3>
+        <pre>
             <div>
 import { IconName } from 'meri-icon'
 import "meri-icon/lib/style.css"
@@ -19,10 +19,10 @@ import "meri-icon/lib/style.css"
 &lt;IconMeriActionAdd size={38} color={'red'} hoverColor={'blue'}/&gt;
             </div>
         </pre>
-        </div>
-        <div>
-            <h3>动态组件</h3>
-            <pre>
+      </div>
+      <div>
+        <h3>动态组件</h3>
+        <pre>
 <div>
  &lt;template&gt;
    &lt;div&gt;
@@ -45,10 +45,10 @@ import "meri-icon/lib/style.css"
  &lt;/script&gt;
 </div>
         </pre>
-        </div>
-        <div>
-            <h3>JSX动态组件</h3>
-            <pre>
+      </div>
+      <div>
+        <h3>JSX动态组件</h3>
+        <pre>
 <div>
     import { defineComponent, h } from "vue"
     import * as components from "meri-icon";
@@ -77,11 +77,9 @@ import "meri-icon/lib/style.css"
     })
 </div>
         </pre>
-        </div>
+      </div>
     </div>
-
-
-</div>
+  </div>
 </template>
 
 <style lang="css">
@@ -104,12 +102,12 @@ pre {
   width: 100%;
   padding: 20px;
   border-radius: 6px;
-  color: #476391;
-  background-color: #e7ecf3;
+  color: var(--blue-500);
+  background-color: var(--gray-200);
   overflow: auto;
 }
 
-pre div{
+pre div {
   text-align: left;
 }
 h3 {

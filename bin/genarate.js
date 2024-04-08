@@ -1,57 +1,55 @@
-const cheerio = require('cheerio')
+const cheerio = require("cheerio");
+const queryColorName = require("./replaceColors");
 
 // 获取SVG标签的属性
 const generate_svg_attrs = (attrs) => {
-
   // 获取父级的属性
   const {
     viewBox = "0 0 24 24",
     fill = "none",
-    xmlns = "http://www.w3.org/2000/svg"
+    xmlns = "http://www.w3.org/2000/svg",
   } = attrs;
 
   const baseAttrs = {
     xmlns,
     fill,
     viewBox,
-    ':width': 'width || size',
-    ':height': 'height || size',
-    ':class': `{
+    ":width": "width || size",
+    ":height": "height || size",
+    ":class": `{
         m_svg_class: !!color,
         m_svg_class_hover: !!hoverColor,
         }`,
-    ':style': `{
+    ":style": `{
             '--svg-color': color,
             '--svg-hover-color': hoverColor || color,
-        }`
-  }
+        }`,
+  };
 
   if (fill !== "fill") {
     Object.assign(baseAttrs, {
-      'stroke-width': 2,
-      'stroke-linecap': 'round',
-      'stroke-linejoin': 'round'
-    })
+      "stroke-width": 2,
+      "stroke-linecap": "round",
+      "stroke-linejoin": "round",
+    });
   }
 
-  return baseAttrs
-}
+  return baseAttrs;
+};
 
 // 将标签对象转换成为字符串
 const attrs2string = (attrs) => {
-  return Object.entries(attrs).reduce((con, [key, value]) => con += `${key}="${value}" `, "")
-}
+  return Object.entries(attrs).reduce(
+    (con, [key, value]) => (con += `${key}="${value}" `),
+    ""
+  );
+};
 
 const generate_vue_template = (code_str, attrs) => {
-
   // 获取父级的属性
-  const {
-    width = 16,
-    height = 16,
-  } = attrs;
+  const { width = 16, height = 16 } = attrs;
 
   const svg_attrs_string = attrs2string(generate_svg_attrs(attrs));
-
 
   return `
     <template>
@@ -92,11 +90,17 @@ const generate_vue_template = (code_str, attrs) => {
     },
   });
   </script>
-  `
-}
+  `;
+};
 
 const generate = (code_str) => {
-  const $ = cheerio.load(code_str, { xmlMode: true });
+  const new_code_str = code_str.replace(/#[A-Fa-f0-9]{6}/g, (code) => {
+    console.log(code);
+    const new_code = queryColorName(code);
+    return new_code;
+  });
+
+  const $ = cheerio.load(new_code_str, { xmlMode: true });
   const svg = $("svg");
   // 获取SVG 的宽高
   const width = svg.attr("width");
@@ -105,29 +109,19 @@ const generate = (code_str) => {
   const xmlns = svg.attr("xmlns");
   const viewBox = `0 0 ${width} ${height}`;
 
-  // const svg_attrs = generate_svg_attrs({
-  //   width,
-  //   height,
-  //   viewBox,
-  //   fill,
-  //   xmlns
-  // });
-
   // 生成返回对应得Vue 组件
   const vue_component_text = generate_vue_template(svg.html(), {
     width,
     height,
     viewBox,
     fill,
-    xmlns
-  })
+    xmlns,
+  });
 
   return vue_component_text;
-}
+};
 
 module.exports = generate;
-
-
 
 // generate(`<svg width="25" height="29" viewBox="0 0 25 29" fill="none" xmlns="http://www.w3.org/2000/svg">
 // <g clip-path="url(#clip0_258_2542)">

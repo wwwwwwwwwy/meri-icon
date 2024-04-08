@@ -1,7 +1,6 @@
-
-  <template>
+<template>
   <div class="container">
-     <h1 class="banner">Meri Icon</h1>
+    <h1 class="banner">Meri Icon</h1>
     <ul class="wrapper">
       <li
         class="item"
@@ -11,10 +10,13 @@
         @click="copyName(iconComponentName)"
       >
         <component :is="iconComponentName" :size="36" />
-        <div>{{ iconComponentName }}</div>
+        <div class="name">{{ iconComponentName }}</div>
       </li>
     </ul>
-     <Banner />
+    <Banner />
+
+    <!-- 切换主题按钮 -->
+    <div class="theme" @click="toggle">主题</div>
   </div>
 </template>
 
@@ -50,19 +52,30 @@ export default defineComponent({
       Message.success("复制成功 !");
     };
 
-    return { names, copyName };
+    const toggle = () => {
+      if (document.documentElement.classList.contains("dark")) {
+        document.documentElement.classList.remove("dark");
+      } else {
+        document.documentElement.classList.add("dark");
+      }
+    };
+
+    return { names, copyName, toggle };
   },
 });
 </script>
 
-
 <style lang="less">
+html {
+  background: var(--gray-0);
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: var(--gray-900);
   margin-top: 60px;
 }
 .container {
@@ -89,13 +102,30 @@ export default defineComponent({
   padding: 20px;
   border-radius: 6px;
   cursor: pointer;
-  color: #486491;
+  color: var(--gray-900);
   transition: background-color 0.2s;
+
+  .name {
+    color: var(--gray-900);
+  }
 }
 .item:hover {
-  background-color: #e7ecf3;
+  background-color: var(--alpha-30);
 }
 .item svg {
   margin-bottom: 12px;
+}
+
+.theme {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 80px;
+  border-radius: 4px;
+  background: var(--blue-500);
+  color: var(--gray-0);
+  padding: 8px;
+  cursor: pointer;
+  user-select: none;
 }
 </style>
