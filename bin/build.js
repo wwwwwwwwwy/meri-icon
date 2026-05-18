@@ -7,7 +7,7 @@ const { parseName } = require('./utils')
 const defaultStyle = process.env.npm_package_config_style || 'stroke'
 const { getAttrs, getElementCode } = require('./template')
 const icons = require('../src/data.json')
-const generate  = require("./genarate");
+const generate = require("./genarate");
 
 const rootDir = path.join(__dirname, '..')
 
@@ -43,6 +43,10 @@ const attrsToString = (attrs, style) => {
 const generateIconCode = async ({name}) => {
   const names = parseName(name, defaultStyle)
   const location = path.join(rootDir, 'src/svg', `${names.name}.svg`)
+  if (!fs.existsSync(location)) {
+    console.warn('⚠️  Skip missing svg:', location)
+    return null
+  }
   const destination = path.join(rootDir, 'src/icons', `${names.name}.vue`)
   const code = fs.readFileSync(location)
   const svgCode = await processSvg(code)
@@ -73,7 +77,12 @@ Object
   .map(key => icons[key])
   .forEach(({name}) => {
     generateIconCode({name})
-      .then(({ComponentName, name}) => {
-        appendToIndex({ComponentName, name})
+      .then((res) => {
+        if (res) {
+          appendToIndex(res)
+        }
+      })
+      .catch((err) => {
+        console.error('Failed to build icon', name, err && err.message ? err.message : err)
       })
   })
