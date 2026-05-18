@@ -19,23 +19,20 @@ jobs:
         with:
           node-version: '16.x'
       - run: yarn install
-      - name: Figma Action
-        uses: primer/figma-action@v1.0.0-alpha.2
-        with:
-          args: "format=svg outputDir=./src/"
+      - name: Figma sync (custom)
+        run: node bin/figma-sync.js
         env:
           FIGMA_FILE_URL: ${{ secrets.FIGMA_FILE_URL }}
           FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
       - name: Debug & normalize svg location
         run: |
           echo "=== src/ ==="; ls -la src/ || true
-          echo "=== src/svg/ ==="; ls -la src/svg/ || true
-          echo "=== stray svgs in src (max depth 2) ==="; find src -maxdepth 2 -name "*.svg" | head -50
+          echo "=== src/svg/ ==="; ls -la src/svg/ | head -30 || true
+          echo "=== stray svgs in src (max depth 2) ==="; find src -maxdepth 2 -name "*.svg" | head -10
           mkdir -p src/svg
-          # If figma-action wrote svgs to ./src/ instead of ./src/svg/, move them in.
+          # If something wrote svgs to ./src/ instead of ./src/svg/, move them in.
           find src -maxdepth 1 -name "*.svg" -exec mv {} src/svg/ \;
-          echo "=== after normalize, src/svg count ==="; ls src/svg | wc -l
-          echo "=== first 20 files in src/svg ==="; ls src/svg | head -20
+          echo "=== final src/svg count ==="; ls src/svg | wc -l
       - run: yarn generate
       - run: yarn build
       - run: yarn build-bundle
