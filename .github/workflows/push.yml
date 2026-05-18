@@ -2,55 +2,67 @@ name: icon-automation
 on:
   push:
     branches:
-    - master
+      - master
     # file paths to consider in the event. Optional; defaults to all.
     paths:
       - package.json
+      - bin/**
+      - .github/workflows/**
 
 jobs:
   icon_automation:
     name: figma icon automation
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '16.x'
-    - run: yarn install
-    - name: Figma Action
-      uses: primer/figma-action@v1.0.0-alpha.2
-      with:
-        args: "format=svg outputDir=./src/"
-      env:
-        FIGMA_FILE_URL: ${{ secrets.FIGMA_FILE_URL }}
-        FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
-    - run: yarn generate
-    - run: yarn build
-    - run: yarn build-bundle
-    - name: GitHub Pages
-      uses: crazy-max/ghaction-github-pages@v1.2.5
-      with:
-        build_dir: dist
-      env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-    - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
-    - run: yarn publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-    - name: Ding Talk Notify
-      uses: wwwwwwwwwy/dingtalk-action@master
-      with:
-        url: ${{ secrets.DINGTALK_WEBHOOK }}
-        type: markdown
-        content: |
-          # meri-icon 图标库更新了
-          ### 请按照以下方法进行更新
-          ```
-          npm update meri-icon
-          ```
-          ### 安装方式
-          ```
-          npm install meri-icon
-          ```
-          ### 访问地址
-          在线查看图标：https://wwwwwwwwwy.github.io/meri-icon/
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+      - run: yarn install
+      - name: Figma Action
+        uses: primer/figma-action@v1.0.0-alpha.2
+        with:
+          args: "format=svg outputDir=./src/"
+        env:
+          FIGMA_FILE_URL: ${{ secrets.FIGMA_FILE_URL }}
+          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+      - name: Debug & normalize svg location
+        run: |
+          echo "=== src/ ==="; ls -la src/ || true
+          echo "=== src/svg/ ==="; ls -la src/svg/ || true
+          echo "=== stray svgs in src (max depth 2) ==="; find src -maxdepth 2 -name "*.svg" | head -50
+          mkdir -p src/svg
+          # If figma-action wrote svgs to ./src/ instead of ./src/svg/, move them in.
+          find src -maxdepth 1 -name "*.svg" -exec mv {} src/svg/ \;
+          echo "=== after normalize, src/svg count ==="; ls src/svg | wc -l
+          echo "=== first 20 files in src/svg ==="; ls src/svg | head -20
+      - run: yarn generate
+      - run: yarn build
+      - run: yarn build-bundle
+      - name: GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v1.2.5
+        with:
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
+      - run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      - name: Ding Talk Notify
+        uses: wwwwwwwwwy/dingtalk-action@master
+        with:
+          url: ${{ secrets.DINGTALK_WEBHOOK }}
+          type: markdown
+          content: |
+            # meri-icon 图标库更新了
+            ### 请按照以下方法进行更新
+            ```
+            npm update meri-icon
+            ```
+            ### 安装方式
+            ```
+            npm install meri-icon
+            ```
+            ### 访问地址
+            在线查看图标：https://wwwwwwwwwy.github.io/meri-icon/
