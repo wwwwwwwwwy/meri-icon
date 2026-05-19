@@ -5,14 +5,8 @@ const getAttrs = (style) => {
     ':height': 'height || size',
     'viewBox': '0 0 24 24',
     'aria-hidden': 'true',
-    ':class': `{
-      m_svg_class: !!color,
-      m_svg_class_hover: !!hoverColor,
-    }`,
-    ':style': `{
-      '--svg-color': color,
-      '--svg-hover-color': hoverColor || color,
-    }`
+    ':class': 'svgClass',
+    ':style': 'svgStyle'
   }
   const fillAttrs = {
     ':fill': 'color111'
@@ -36,33 +30,41 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
     </svg>
   </template>
   <script lang="ts">
-import { defineComponent, PropType, toRefs,ref } from "vue";
+import { computed, defineComponent, toRefs,ref } from "vue";
 
 export default defineComponent({
   props: {
     size: {
-      type: Number as PropType<number>,
+      type: Number,
       default: 16,
     },
     color: {
-      type: String as PropType<string | undefined>,
+      type: String,
     },
     hoverColor: {
-      type: String as PropType<string | undefined>,
+      type: String,
     },
     height: {
-      type: Number as PropType<number>,
+      type: Number,
       default: 0,
     },
     width: {
-      type: Number as PropType<number>,
+      type: Number,
       default: 0,
     },
   },
   setup(props, { attrs }) {
-    const { size,height,width, color } = toRefs(props);
+    const { size,height,width, color, hoverColor } = toRefs(props);
     const html = ref('${svgCode}')
-    return { size,height,width, color, attrs ,html};
+    const svgClass = computed(() => ({
+      m_svg_class: !!color.value,
+      m_svg_class_hover: !!hoverColor.value,
+    }))
+    const svgStyle = computed(() => ({
+      "--svg-color": color.value,
+      "--svg-hover-color": hoverColor.value || color.value,
+    }))
+    return { size,height,width, color, hoverColor, attrs ,html, svgClass, svgStyle};
   },
 });
 </script>
